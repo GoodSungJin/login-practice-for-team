@@ -1,0 +1,143 @@
+.abc {
+  height: 13vh;
+  width: 100%;
+  background: cornflowerblue;
+}
+
+.common-container {
+  width: 50%;
+  margin: 0 auto;
+  min-width: 960px;
+}
+
+.title-bg {
+  background: #F2F2F2;
+  border-bottom: solid 3px #503396;
+  .title {
+    padding: 1rem 0;
+    color: #503396;
+    font-weight: 900;
+  }
+}
+
+.main-container {
+  .container-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 0 3rem 0;
+    
+    h2 {
+      display: inline-block;
+      color: #666666;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    span {
+      margin-left: 0.8rem;
+      font-size: 0.8rem;
+      color: #503396;
+    }
+  
+    .navView{
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      
+      .box {
+        background: #F2F2F2;
+        height: 55%;
+        width: 2.7rem;
+        margin-left: 10px;
+      }
+      .purple {
+        background: #503396;
+      }
+    }
+  }
+
+  .default-information {
+    .default-information-title {
+      margin-left: 0.8rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .userForm {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+
+      .inputId {
+        border-top: solid 2px #503396;
+        em {
+          margin-left: 60px;
+          line-height: 3.5vh;
+          color: orangered;
+        }
+      }
+      
+      .formBox {
+        display: flex;
+        border-bottom: solid 1px #dcdcdc;
+        
+        .labelStyle {
+          width: 23%;
+          padding: 0.7rem 0 0.7rem 1.5rem;
+          background: #F2F2F2;
+        }
+
+        input {
+          margin: 0.3rem 0 0.3rem 1rem;
+          background: #F2F2F2;
+          height: 2vh;
+          padding-left: 0.5rem;
+          
+        }
+
+        button {
+          margin: 0.3rem 0 0.3rem 1rem;
+          background: #F2F2F2;
+          border: 1px solid #dfdfdf;
+          height: 2.5vh;
+          padding: 0 1.3rem;
+          font-weight: 500;
+          font-size: 0.8rem;
+        }
+
+        .errors {
+          width: 140px;
+        }
+
+        em {
+          margin-left: 15px;
+          line-height: 3.5vh;
+          color: orangered;
+        }
+
+        span {
+          margin-left: 15px;
+          line-height: 3.5vh;
+          color: #666666;
+        }
+
+      }
+
+      .date-of-birth {
+        
+        input {
+          text-align: center;
+          width: 40px;
+        }
+
+        input ~ input {
+          width: 25px;
+          margin-left: 0;
+        }
+
+        span {
+          margin: 0 10px;
+        }
+
+      }
+    }
+  }
+}
