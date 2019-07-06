@@ -23,17 +23,17 @@ import { PhoneValidator } from '../validators/phone-validator';
               inputBackground
               >
               <button class="double-check">중복확인</button>
-              <em *ngIf="!!userid.errors?.required && userid.touched">아이디를 입력해주세요.</em>
-              <em *ngIf="!!userid.errors?.pattern && userid.touched">영문이나 숫자 혹은 그 조합 8~12자리</em>
-            </div>
+              <em *ngIf="!!userid.errors?.required && userid.touched" class="idAlert">아이디를 입력해주세요.</em>
+              <em *ngIf="!!userid.errors?.pattern && userid.touched" class="idAlert">영문이나 숫자 혹은 그 조합 8~12자리</em>
+              </div>
             <ng-container formGroupName="passwordGroup">
               <div class="password">
                 <span class="padding">*비밀번호</span>
               </div>
               <div class="password-wrap">
                 <input type="password" class="password-input" formControlName="password" inputBackground>
-                <em *ngIf="!!password.errors?.required && password.touched">비밀번호를 입력하세요.</em>
-                <em *ngIf="!!password.errors?.pattern && password.touched">형식에 맞는 비밀번호를 입력 하세요.</em>
+                <em *ngIf="!!password.errors?.required && password.touched" class="alert">비밀번호를 입력하세요.</em>
+                <em *ngIf="!!password.errors?.pattern && password.touched" class="alert">형식에 맞는 비밀번호를 입력 하세요.</em>
               </div>
 
               <div class="check-password">
@@ -41,8 +41,8 @@ import { PhoneValidator } from '../validators/phone-validator';
               </div>
               <div class="check-password-wrap">
                 <input type="password" class="check-password-input" formControlName="confirmPassword" inputBackground>
-                <em *ngIf="!!confirmPassword.errors?.required && confirmPassword.touched">비밀번호를 확인해주세요.</em>
-                <em *ngIf="!!passwordGroup.errors?.match && confirmPassword.touched">비밀번호가 일치하지 않습니다.</em>
+                <em *ngIf="!!confirmPassword.errors?.required && confirmPassword.touched" class="alert">비밀번호를 확인해주세요.</em>
+                <em *ngIf="!!passwordGroup.errors?.match && confirmPassword.touched" class="alert">비밀번호가 일치하지 않습니다.</em>
               </div>
             </ng-container>
 
@@ -51,7 +51,7 @@ import { PhoneValidator } from '../validators/phone-validator';
             </div>
             <div class="name-wrap">
               <input type="text" class="name-input" formControlName="name" inputBackground>
-              <em *ngIf="!!name.errors?.required && name.touched">이름을 입력하세요.</em>
+              <em *ngIf="!!name.errors?.required && name.touched" class="alert">이름을 입력하세요.</em>
             </div>
 
             <div class="birth">
@@ -62,7 +62,7 @@ import { PhoneValidator } from '../validators/phone-validator';
               <input type="text" class="year-input" formControlName="year" inputBackground> 년
               <input type="text" class="month-input" formControlName="month" inputBackground> 월
               <input type="text" class="day-input" formControlName="day" inputBackground> 일
-              <em *ngIf="!!birthGroup.errors?.birthValid && birthGroup.touched">유효한 생년월일를 입력하세요.</em>
+              <em *ngIf="!!birthGroup.errors?.birthValid && birthGroup.touched" class="birthAlert">유효한 생년월일를 입력하세요.</em>
             </div>
             </ng-container>
             
@@ -74,7 +74,7 @@ import { PhoneValidator } from '../validators/phone-validator';
                 <input type="text" class="phone-input" formControlName="firstNum" inputBackground> -
                 <input type="text" class="phone-input" formControlName="middleNum" inputBackground> -
                 <input type="text" class="phone-input" formControlName="lastNum" inputBackground>
-                <em *ngIf="!!phoneGroup.errors?.phoneValid && phoneGroup.touched">유효한 휴대전화 번호를 입력하세요.</em>
+                <em *ngIf="!!phoneGroup.errors?.phoneValid && phoneGroup.touched" class="phoneAlert">유효한 휴대전화 번호를 입력하세요.</em>
               </div>
             </ng-container>
 
@@ -83,8 +83,8 @@ import { PhoneValidator } from '../validators/phone-validator';
             </div>
             <div class="email-wrap">
               <input type="text" class="email-input" formControlName="email" inputBackground>
-              <em *ngIf="!!email.errors?.required && email.touched">이메일을 입력하세요.</em>
-              <em *ngIf="!!email.errors?.pattern && email.touched">형식에 맞는 이메일을 입력하세요.</em>
+              <em *ngIf="!!email.errors?.required && email.touched" class="alert">이메일을 입력하세요.</em>
+              <em *ngIf="!!email.errors?.pattern && email.touched" class="alert">형식에 맞는 이메일을 입력하세요.</em>
             </div>
           </div>
       </form>

@@ -3,11 +3,7 @@
   margin: 0 auto;
 }
 
-.padding {
-  padding: 5px 5px 5px 26px;
-}
-
-
+/* 그리드 */
 .form-style {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -17,6 +13,11 @@
   border-bottom: 2px solid #dfdfdf;
 }
 
+.padding {
+  padding: 5px 5px 5px 26px;
+}
+
+/* 기본 정보 h4 */
 .basic-info {
     font-size: 0.9rem;
     font-weight: 700;
@@ -27,6 +28,7 @@
     border-bottom: 1.5px solid #351F66;
 }
 
+/* form 요소 관련 */
 .id, .password, .check-password, .name, .birth, .phone, .email {
   grid-column: 1 / 2;
   background-color: #f8f8f8;
@@ -77,6 +79,29 @@
   vertical-align: middle;
 }
 
+/* 유효성 체크 알림 */
+.alert, .idAlert, .birthAlert, .phoneAlert {
+  font-size: 0.8rem;
+  color: orangered;
+}
+
+.alert {
+  margin-left: 110px;
+}
+
+.idAlert {
+  margin-left: 15px;
+}
+
+.birthAlert {
+  margin-left: 84px;
+}
+
+.phoneAlert {
+  margin-left: 79px;
+}
+
+/* 중복 확인 버튼 */
 .double-check {
   width: 94px;
   height: 26px;
@@ -88,6 +113,7 @@
   letter-spacing: 0.03em;
 }
 
+/* 버튼 */
 .wrap-submit {
   width: 970px;
   margin: 40px auto;
