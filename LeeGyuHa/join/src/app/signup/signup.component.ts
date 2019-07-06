@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PasswordValidator } from '../password-validator';
+import { BirthValidator } from '../birth-validator';
 
 @Component({
   selector: 'app-signup',
@@ -49,11 +50,14 @@ import { PasswordValidator } from '../password-validator';
         <div class="birth">
           <span class="padding">*생년월일</span>
         </div>
+        <ng-container formGroupName="birthGroup">
         <div class="birth-wrap">
-          <input type="text" class="year-input"> 년
-          <input type="text" class="month-input"> 월 
-          <input type="text" class="day-input"> 일
+          <input type="text" class="year-input" formControlName="year"> 년
+          <input type="text" class="month-input" formControlName="month"> 월
+          <input type="text" class="day-input" formControlName="day"> 일
+          <em *ngIf="birthGroup.errors?.birthValid && birthGroup.touched">유효한 생년월일를 입력해주세요.</em>
         </div>
+        </ng-container>
         
         <div class="phone">
           <span class="padding">*휴대폰</span>
@@ -83,6 +87,7 @@ import { PasswordValidator } from '../password-validator';
   <pre> passwordGroup.confirmPassword.valid : {{ confirmPassword.valid | json }}</pre>
   <pre> passwordGroup.confirmPassword.errors : {{ confirmPassword.errors | json }}</pre>
   <pre> passwordGroup.errors : {{ passwordGroup.errors | json }}</pre>
+  <pre> birthGroup.errors : {{ birthGroup.errors | json }}</pre>
   `,
   styleUrls: ['./signup.component.css']
 })
@@ -104,6 +109,11 @@ export class SignupComponent implements OnInit {
         ]],
         confirmPassword : ['', Validators.required]
       }, { validator: PasswordValidator.match}),
+      birthGroup: this.fb.group({
+        year: ['',  Validators.required,],
+        month: ['', Validators.required],
+        day: ['', Validators.required]
+      }, { validator: BirthValidator.birthValid}),
       name: ['', Validators.required]
     });
   }
@@ -126,5 +136,9 @@ export class SignupComponent implements OnInit {
 
   get name() {
     return this.userForm.get('name');
+  }
+
+  get birthGroup() {
+    return this.userForm.get('birthGroup');
   }
 }
