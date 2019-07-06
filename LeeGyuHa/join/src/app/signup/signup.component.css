@@ -1,0 +1,118 @@
+.main-content {
+  width: 970px;
+  margin: 0 auto;
+}
+
+.padding {
+  padding: 5px 5px 5px 26px;
+}
+
+
+.form-style {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 14.3% 14.3% 14.3% 14.3% 14.3% 14.3% 14.3%;
+  height: 264px;
+  font-size: 0.9rem;
+  border-bottom: 2px solid #dfdfdf;
+}
+
+.basic-info {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding-left: 1rem;
+    letter-spacing: -0.05em;
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #351F66;
+}
+
+.id, .password, .check-password, .name, .birth, .phone, .email {
+  grid-column: 1 / 2;
+  background-color: #f8f8f8;
+  font-size: 0.8rem;
+  font-weight: normal;
+  border-top:  1px solid #dcdcdc;
+  padding: 5px;
+}
+
+.id-wrap, .password-wrap, .check-password-wrap,
+.name-wrap, .birth-wrap, .phone-wrap, .email-wrap {
+  grid-column: 2 / 6;
+  padding: 5px 5px 5px 30px;
+  border-top:  1px solid #dcdcdc;
+}
+
+.id-input, .password-input, .check-password-input, .name-input, .email-input {
+  margin-right: 8px;
+  width: 198px;
+  border: 1px solid #d9d9d9;
+  line-height: 22px;
+  height: 22px;
+  background-color: #f8f8f8;
+  color: #333;
+  text-indent: 14px;
+  vertical-align: middle;
+}
+
+.year-input, .phone-input {
+  width: 67px;
+  border: 1px solid #d9d9d9;
+  line-height: 22px;
+  height: 22px;
+  background-color: #f8f8f8;
+  color: #333;
+  text-indent: 14px;
+  vertical-align: middle;
+}
+
+.month-input, .day-input {
+  width: 44px;
+  border: 1px solid #d9d9d9;
+  line-height: 22px;
+  height: 22px;
+  background-color: #f8f8f8;
+  color: #333;
+  text-indent: 14px;
+  vertical-align: middle;
+}
+
+.double-check {
+  width: 94px;
+  height: 26px;
+  border: none;
+  outline: none;
+  font-size: 0.8rem;
+  background-color: #f1f1f1;
+  vertical-align: middle;
+  letter-spacing: 0.03em;
+}
+
+.wrap-submit {
+  width: 970px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.cancel-btn, .confirm-btn {
+  display: inline-block;
+  width: 123px;
+  height: 45px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+
+.cancel-btn {
+  margin-right: 15px;
+  background-color: #fff;
+  border: 1.2px solid #351F66;
+  color: #351F66;
+  font-weight: 700; 
+}
+
+.confirm-btn {
+  background-color: #351F66;
+  color: #fff;
+  font-weight: 700; 
+}
