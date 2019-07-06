@@ -62,7 +62,7 @@ import { PhoneValidator } from '../validators/phone-validator';
               <input type="text" class="year-input" formControlName="year" inputBackground> 년
               <input type="text" class="month-input" formControlName="month" inputBackground> 월
               <input type="text" class="day-input" formControlName="day" inputBackground> 일
-              <em *ngIf="!!birthGroup.errors?.birthValid && birthGroup.touched" class="birthAlert">유효한 생년월일를 입력하세요.</em>
+              <em *ngIf="!!birthGroup.errors?.birthValid && birthGroup.touched" class="birthAlert">유효한 생년월일를 입력하세요. ex) 2001-05-08</em>
             </div>
             </ng-container>
             

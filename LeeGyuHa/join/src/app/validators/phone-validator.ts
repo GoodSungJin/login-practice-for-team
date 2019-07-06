@@ -7,6 +7,7 @@ export class PhoneValidator {
     const lastNum = phoneGroup.get('lastNum').value;
     const phoneNum = firstNum + '-' + middleNum + '-' + lastNum;
     const phoneRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
+    
     if(!phoneRegExp.test(phoneNum)) {
       return { phoneValid: { phoneNum } };
     } else {
