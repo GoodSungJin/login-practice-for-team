@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PasswordValidator } from '../password-validator';
 import { BirthValidator } from '../birth-validator';
+import { PhoneValidator } from '../phone-validator';
 
 @Component({
   selector: 'app-signup',
@@ -14,7 +15,9 @@ import { BirthValidator } from '../birth-validator';
           <span class="padding">*아이디</span>
         </div>
         <div class="id-wrap">
-          <input type="text" class="id-input" formControlName="userid">
+          <input type="text" class="id-input" formControlName="userid"
+           [style.background-color]= "isActive ? 'red' : 'blue'"
+          >
           <button class="double-check">중복확인</button>
           <em *ngIf="userid.errors?.required && userid.touched">아이디를 입력해주세요.</em>
           <em *ngIf="userid.errors?.pattern && userid.touched">영문이나 숫자 혹은 그 조합 8~12자리</em>
@@ -26,7 +29,7 @@ import { BirthValidator } from '../birth-validator';
         <div class="password-wrap">
           <input type="password" class="password-input" formControlName="password">
           <em *ngIf="password.errors?.required && password.touched">비밀번호를 입력하세요.</em>
-          <em *ngIf="password.errors?.pattern && password.touched">비밀번호를 형식에 맞게 입력.</em>
+          <em *ngIf="password.errors?.pattern && password.touched">형식에 맞는 비밀번호를 입력 하세요.</em>
         </div>
 
         <div class="check-password">
@@ -35,7 +38,7 @@ import { BirthValidator } from '../birth-validator';
         <div class="check-password-wrap">
           <input type="password" class="check-password-input" formControlName="confirmPassword">
           <em *ngIf="confirmPassword.errors?.required && confirmPassword.touched">비밀번호를 확인해주세요.</em>
-          <em *ngIf="confirmPassword.touched && passwordGroup.errors?.match">비밀번호가 일치하지 않습니다.</em>
+          <em *ngIf="passwordGroup.errors?.match && confirmPassword.touched">비밀번호가 일치하지 않습니다.</em>
         </div>
       </ng-container>
 
@@ -55,18 +58,21 @@ import { BirthValidator } from '../birth-validator';
           <input type="text" class="year-input" formControlName="year"> 년
           <input type="text" class="month-input" formControlName="month"> 월
           <input type="text" class="day-input" formControlName="day"> 일
-          <em *ngIf="birthGroup.errors?.birthValid && birthGroup.touched">유효한 생년월일를 입력해주세요.</em>
+          <em *ngIf="birthGroup.errors?.birthValid && birthGroup.touched">유효한 생년월일를 입력하세요.</em>
         </div>
         </ng-container>
         
-        <div class="phone">
-          <span class="padding">*휴대폰</span>
-        </div>
-        <div class="phone-wrap">
-          <input type="text" class="phone-input"> -
-          <input type="text" class="phone-input"> -
-          <input type="text" class="phone-input">
-        </div>
+        <ng-container formGroupName="phoneGroup">
+          <div class="phone">
+            <span class="padding">*휴대폰</span>
+          </div>
+          <div class="phone-wrap">
+            <input type="text" class="phone-input" formControlName="firstNum"> -
+            <input type="text" class="phone-input" formControlName="middleNum"> -
+            <input type="text" class="phone-input" formControlName="lastNum">
+            <em *ngIf="phoneGroup.errors?.phoneValid && phoneGroup.touched">유효한 휴대전화 번호를 입력하세요.</em>
+          </div>
+        </ng-container>
 
         <div class="email">
           <span class="padding">*이메일</span>
@@ -95,6 +101,7 @@ import { BirthValidator } from '../birth-validator';
 })
 export class SignupComponent implements OnInit {
   userForm: FormGroup;
+  isActive: boolean = true;
 
   constructor( private fb: FormBuilder) { }
 
@@ -104,6 +111,7 @@ export class SignupComponent implements OnInit {
         Validators.required,
         Validators.pattern('^[A-Za-z0-9]{8,12}$')
       ]],
+
       passwordGroup: this.fb.group({
         password: ['', [
           Validators.required,
@@ -111,12 +119,21 @@ export class SignupComponent implements OnInit {
         ]],
         confirmPassword : ['', Validators.required]
       }, { validator: PasswordValidator.match}),
+
       birthGroup: this.fb.group({
-        year: ['',  Validators.pattern('^[0-9]{1,4}$')],
-        month: ['', Validators.required],
-        day: ['', Validators.required]
+        year: [''],
+        month: [''],
+        day: ['']
       }, { validator: BirthValidator.birthValid}),
+
+      phoneGroup: this.fb.group({
+        firstNum: [''],
+        middleNum: [''],
+        lastNum: ['']
+      }, { validator: PhoneValidator.phoneValid}),
+
       name: ['', Validators.required],
+
       email: ['', [
         Validators.required,
         Validators.pattern('^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$')
@@ -150,5 +167,9 @@ export class SignupComponent implements OnInit {
 
   get email() {
     return this.userForm.get('email');
+  }
+
+  get phoneGroup() {
+    return this.userForm.get('phoneGroup');
   }
 }
