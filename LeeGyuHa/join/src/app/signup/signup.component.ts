@@ -72,7 +72,9 @@ import { BirthValidator } from '../birth-validator';
           <span class="padding">*이메일</span>
         </div>
         <div class="email-wrap">
-          <input type="text" class="email-input">
+          <input type="text" class="email-input" formControlName="email">
+          <em *ngIf="email.errors?.required && email.touched">이메일을 입력하세요.</em>
+          <em *ngIf="email.errors?.pattern && email.touched">형식에 맞는 이메일을 입력하세요.</em>
         </div>
       </div>
     </form>
@@ -110,11 +112,15 @@ export class SignupComponent implements OnInit {
         confirmPassword : ['', Validators.required]
       }, { validator: PasswordValidator.match}),
       birthGroup: this.fb.group({
-        year: ['',  Validators.required,],
+        year: ['',  Validators.pattern('^[0-9]{1,4}$')],
         month: ['', Validators.required],
         day: ['', Validators.required]
       }, { validator: BirthValidator.birthValid}),
-      name: ['', Validators.required]
+      name: ['', Validators.required],
+      email: ['', [
+        Validators.required,
+        Validators.pattern('^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$')
+      ]]
     });
   }
 
@@ -140,5 +146,9 @@ export class SignupComponent implements OnInit {
 
   get birthGroup() {
     return this.userForm.get('birthGroup');
+  }
+
+  get email() {
+    return this.userForm.get('email');
   }
 }
