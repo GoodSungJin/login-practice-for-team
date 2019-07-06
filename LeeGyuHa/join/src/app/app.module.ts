@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
+
 import { ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
-import { InputBackgroundDirective } from './input-background.directive';
+
+import { InputBackgroundDirective } from './directives/input-background.directive';
 
 @NgModule({
   declarations: [

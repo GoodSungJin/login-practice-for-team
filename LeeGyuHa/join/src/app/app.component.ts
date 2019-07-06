@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   template: `
     <app-signup></app-signup>
   `,
-  styleUrls: ['./app.component.css']
+  styles:['']
 })
-export class AppComponent {
-  title = 'join';
-}
+export class AppComponent {}
