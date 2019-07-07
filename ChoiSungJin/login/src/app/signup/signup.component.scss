@@ -11,7 +11,7 @@
 }
 
 .title-bg {
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-bottom: solid 3px #503396;
   .title {
     padding: 1rem 0;
@@ -73,6 +73,9 @@
           line-height: 3.5vh;
           color: orangered;
         }
+        button {
+          cursor: pointer;
+        }
       }
       
       .formBox {
@@ -122,9 +125,7 @@
       }
 
       .date-of-birth {
-        
         input {
-          text-align: center;
           width: 40px;
         }
 
@@ -136,8 +137,45 @@
         span {
           margin: 0 10px;
         }
-
       }
+
+      .phone-number {
+        border-bottom: 2px solid #dcdcdc;
+        input {
+          width: 40px;
+          
+        }
+
+        input ~ input {
+          margin-left: 0;
+        }
+
+        span {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+
+  .select-box {
+    display: flex;
+    font-weight: 700;
+    width: 260px;
+    margin: 50px auto 0;
+    justify-content: space-between;
+
+    .cansle {
+      border: 1px solid #351F66;
+      color: #351F66;
+      padding: 15px 45px;
+      cursor: pointer;
+    }
+
+    .check {
+      background: #351F66;
+      color: #fff;
+      padding: 15px 45px;
+      cursor: pointer;
     }
   }
 }

@@ -43,6 +43,20 @@ export class SignupComponent implements OnInit {
           Validators.pattern('[0-9]{1-2}'),
           Validators.required
         ]),
+      }),
+      phoneNumber: new FormGroup({
+        front: new FormControl('', [
+          Validators.pattern('[0-9]{3}'),
+          Validators.required
+        ]),
+        middle: new FormControl('', [
+          Validators.pattern('[0-9]{4}'),
+          Validators.required
+        ]),
+        back: new FormControl('', [
+          Validators.pattern('[0-9]{4}'),
+          Validators.required
+        ]),
       })
     })
 
@@ -73,6 +87,10 @@ export class SignupComponent implements OnInit {
 
   get dateOfBirth() {
     return this.userForm.get('dateOfBirth');
+  }
+
+  get phoneNumber() {
+    return this.userForm.get('phoneNumber');
   }
 
 

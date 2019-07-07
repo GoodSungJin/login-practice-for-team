@@ -84,8 +84,25 @@
           formControlName="day" required>
           <span>일</span>
         </div>
+
+        <div class="formBox phone-number" formGroupName="phoneNumber">
+          <label for="dateOfBirth" class="labelStyle">*휴대폰</label>
+          <input type="text" id="dateOfBirth" placeholder="010"
+          formControlName="front" required>
+          <span>-</span>
+          <input type="text" placeholder="1234"
+          formControlName="middle" required>
+          <span>-</span>
+          <input type="text" placeholder="5678"
+          formControlName="back" required>
+        </div>
       </form>
     </div>
+  </div>
+
+  <div class="select-box">
+    <button class="cansle">취소</button>
+    <button class="check"> 확인</button>
   </div>
 </div>
 
