@@ -1,0 +1,111 @@
+<div class="abc"></div>
+
+<div class="title-bg">
+  <div class="title common-container">
+    <span>회원가입</span>
+  </div>
+</div>
+
+<div class="common-container main-container">
+  <div class="container-title">
+    <div>
+      <h2>가입정보입력</h2>
+      <span>(*표시 항목 필수입력)</span>
+    </div>
+    <div class="navView">
+      <div class="box"></div>
+      <div class="box purple"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="default-information">
+    <div class="default-information-title">
+      <span>기본정보 (필수입력)</span>
+    </div>
+
+    <div>
+      <form [formGroup]="userForm" class="userForm">
+        <div class="formBox inputId">
+          <label for="userid" class="labelStyle">*아이디</label>
+          <input type="text" id="userid" placeholder="email@exemple.com"
+          formControlName="userId" required>
+          <button>중복확인</button>
+          <em *ngIf="userId.errors ?.pattern && userId.touched">
+            형식에 맞게 작성하세요.
+          </em>
+          <em *ngIf="userId.errors ?.required && userId.touched">
+            이메일을 입력하세요.
+          </em>
+        </div>
+
+        <div formGroupName="passwordGroup">
+          <div class="formBox inputPassword">
+            <label for="userpassword" class="labelStyle">*비밀번호</label>
+            <input type="text" id="userpassword" placeholder="비밀번호를 입력하세요."
+            formControlName="password" required>
+            <em class="errors" *ngIf="userPassword.errors ?.required && userPassword.touched">
+              비밀번호를 입력하세요.
+            </em>
+            <em class="errors" *ngIf="userPassword.errors ?.pattern && userPassword.touched">
+              형식에 맞게 입력하세요.
+            </em>
+            <span>영문, 숫자, 특수문자 중 2가지 이상 조합 10자리 이상</span>
+          </div>
+
+          <div class="formBox inputPassword">
+            <label for="confirmpassword" class="labelStyle">*비밀번호 확인</label>
+            <input type="text" id="confirmpassword" placeholder="비밀번호를 재입력하세요."
+            formControlName="confirmPassword" required>
+            <em *ngIf="userPasswordGroup.errors ?.match && userPasswordGroup.touched">
+              비밀번호가 일치하지 않습니다.
+            </em>
+          </div>
+        </div>
+
+        <div class="formBox">
+          <label for="userName" class="labelStyle">*이름</label>
+          <input type="text" id="userName" placeholder="ex) 홍길동"
+          formControlName="userName" required>
+          <em *ngIf="userName.errors ?.required && userName.touched">
+            이름을 입력하세요.
+          </em>
+        </div>
+
+        <div class="formBox date-of-birth" formGroupName="dateOfBirth">
+          <label for="dateOfBirth" class="labelStyle">*생년월일</label>
+          <input type="text" id="dateOfBirth" placeholder="2019"
+          formControlName="year" required>
+          <span>년</span>
+          <input type="text" placeholder="12"
+          formControlName="month" required>
+          <span>월</span>
+          <input type="text" placeholder="31"
+          formControlName="day" required>
+          <span>일</span>
+        </div>
+
+        <div class="formBox phone-number" formGroupName="phoneNumber">
+          <label for="dateOfBirth" class="labelStyle">*휴대폰</label>
+          <input type="text" id="dateOfBirth" placeholder="010"
+          formControlName="front" required>
+          <span>-</span>
+          <input type="text" placeholder="1234"
+          formControlName="middle" required>
+          <span>-</span>
+          <input type="text" placeholder="5678"
+          formControlName="back" required>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="select-box">
+    <button class="cansle">취소</button>
+    <button class="check"> 확인</button>
+  </div>
+</div>
+
+<br>
+<pre>userId.valid: {{ userPassword.valid }}</pre>
+<pre>userId.errors: {{ userPassword.errors | json }}</pre>
